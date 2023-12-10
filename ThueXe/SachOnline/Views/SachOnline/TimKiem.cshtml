@@ -1,0 +1,49 @@
+﻿@using SachOnline.Controllers
+@using SachOnline.Models
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    string key = Request.QueryString["key"];
+
+    List<XEDAP> ketqua = new List<XEDAP>();
+
+}
+
+<h2>KẾT QUẢ TÌM KIẾM</h2>
+
+@{
+    if (string.IsNullOrEmpty(key))
+    {
+        <h3>Vui lòng nhập từ khóa</h3>
+    }
+    else
+    {
+        if (key == "" || key.Length < 1)
+        {
+            <h3>Vui lòng nhập từ khóa</h3>
+        }
+        else
+        {
+            ketqua = new SachOnlineController().SearchByKey(key);
+
+            foreach (var item in ketqua)
+            {
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+                    <div class="thumbnail">
+                        <img src="~/Images/Sach/@item.HinhMinhHoa" alt="Thumbnail Image 1" class="img-responsive img-rounded imgbook" style="max-width: 251.3px; max-height: 314.13px">  <div class="caption">
+                            <h4 style="min-height:70px;">
+                                <a href="@Url.Action("ChiTietSach", "SachOnline", new { id = item.MaXe })">@item.TenXe</a>
+                            </h4>
+                            <p>
+                                <a href="@Url.Action("ThemGioHang", "GioHang", new { ms = item.MaXe, url = Request.Url.ToString() })" class="btn btn-primary" role="button">
+                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        }
+    }

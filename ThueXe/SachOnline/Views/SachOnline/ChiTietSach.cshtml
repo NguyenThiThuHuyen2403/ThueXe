@@ -1,0 +1,29 @@
+﻿@model SachOnline.Models.XEDAP
+    @{
+        ViewBag.Title = "ChiTietSach";
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+
+    <div class="thumbnail">
+
+        <h4 class="TenXe">
+            <b>@Model.TenXe</b>
+        </h4>
+
+        <img src="/Images/Sach/@Model.HinhMinhHoa" alt="@Model.TenXe">
+        <div class="motasach">
+            <p>
+                @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+            </p>
+        </div>
+
+        <p class="ngaycapnhat"> Ngày cập nhật: @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}") </p>
+        <p class="glaban"> Giá thuê trong 1 ngày: <span>@Html.FormatValue(@Model.DonGia, "{0:#,##0}") VNĐ</span></p>
+        <p class="addtocard">
+            <a href="@Url.Action("ThemGioHang","GioHang", new { ms = Model.MaXe, url = Request.Url.ToString() })"
+               class="btn btn-primary" role="button">
+                <span class="glyphicon glyphicon-shopping-cart"
+                      aria-hidden="true"></span> Add to Cart
+            </a>
+        </p>
+    </div>

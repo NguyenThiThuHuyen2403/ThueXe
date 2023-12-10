@@ -1,0 +1,128 @@
+﻿@model SachOnline.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Tạo Đơn</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Số đơn </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sSoDon" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã KH </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sMaKH" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày đặt </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sNgayDat" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Trị giá </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sTriGia" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày mượn xe </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sNgayMuonXe" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên KH </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sTenKH" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">DiaChi </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sDiaChi" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">SĐT </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sSDT" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Hình thức thanh toán </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sHinhThucThanhToan" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Số ngày thuê </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sSoNgayThue" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Số tiền phạt </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sSoTienPhat" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tình trạng trả xe </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sTrangThai" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày trả xe </label>
+
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="sNgayTraXe" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

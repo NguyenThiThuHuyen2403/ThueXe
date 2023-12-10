@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ seletor: 'textarea' });</script>
+    <style type="text/css">
+
+        .imgbook {
+            transition: all 1s ease-in;
+            width: 200px;
+        }
+
+            .imgbook:hover {
+                transform: scale(0.9);
+                cursor: pointer;
+            }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-group {
+            min-width: 250px;
+            margin: 10px;
+        }
+
+        .book-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 20px;
+        }
+
+            .book-info div {
+                flex: 1;
+            }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            padding: 5px;
+        }
+
+        .Contrainer-Book {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .book-info > img {
+            width: 150px;
+            height: 200px;
+            margin: 5px;
+        }
+
+        .imgsachbannhieu {
+            width: 100px;
+        }
+
+        .tensach {
+            color: red;
+            text-align: center;
+            background-image: linear-gradient(blue, white);
+        }
+    </style>
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navAdmin" aria-expanded="false">
+                    <span class="icon-bar"></span>  <span class="icon-bar"></span>  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                    XEDAPADMIN
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navAdmin">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Index","XeDap")">QUẢN LÝ XE ĐẠP</a> </li>
+                    <li><a href="@Url.Action("Index","ChuDe")">QUẢN LÝ CHỦ ĐỀ</a> </li>
+                    <li><a href="@Url.Action("Index","NhaXuatBan")">QUẢN LÝ NHÀ XUẤT BẢN</a> </li>
+                    <li><a href="@Url.Action("Index","KhachHang")">QUẢN LÝ KHÁCH HÀNG</a> </li>
+                    <li><a href="@Url.Action("Index","QLDonThueXe")">QUẢN LÝ ĐƠN THUÊ XE</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">  @RenderBody() </div>
+    <footer class="container well">
+        <div style="text-align:center;">
+            <p>ADMIN</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

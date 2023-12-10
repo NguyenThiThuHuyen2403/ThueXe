@@ -1,0 +1,74 @@
+﻿
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "SachTheoChuDe";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    var p = ViewBag.Pager;
+
+    var id = ViewBag.MaCd;
+}
+
+<h2 class="text-center">XE ĐẠP THEO CHỦ ĐỀ</h2>
+<hr>
+<div class="row text-center">
+    @foreach (SachOnline.Models.XEDAP sach in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div class="thumbnail">
+                <img src="~/Images/Sach/@sach.HinhMinhHoa" alt="Thumbnail Image 1" class="img- responsive img-rounded imgbook" style="width:400px;">  <div class="caption">
+                    <h4 style="min-height:70px;">
+                        <a href="@Url.Action("ChiTietSach","SachOnline", new { id = sach.MaXe})">@sach.TenXe</a>
+                    </h4>
+                    <p>
+                        <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sach.MaXe, url = Request.Url.ToString() })" class="btn btn-primary" role="button">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-
+                                  hidden="true"></span> Add to Cart
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section MenuPager{
+    <div class="MenuPager">
+        
+        <ul class="pagination justify-content-end">
+          
+            <li>
+                @if (p.CurrentPage != p.StartPage)
+                {
+                    <a href="~/SachOnline/SachTheoChuDe?id=@id&page=@(p.CurrentPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                }
+            </li>
+            @for (int i = p.StartPage; i <= p.EndPage; i++)
+            {
+
+                <li class="page-item @(i==p.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="~/SachOnline/SachTheoChuDe?id=@id&page=@i">@i</a>
+                </li>
+            }
+        <li>
+            @if (p.CurrentPage != p.EndPage)
+            {
+                <a href="~/SachOnline/SachTheoChuDe?id=@id&page=@(p.CurrentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            }
+        </li>
+        </ul>
+    </div>
+}
+<style>
+    .MenuPager {
+        display: inline;
+        text-align: center;
+    }
+</style>
+
+

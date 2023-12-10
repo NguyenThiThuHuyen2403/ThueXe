@@ -1,0 +1,128 @@
+﻿@*Khai báo để sử dụng chức năng phân trang*@
+@using SachOnline.Models @using PagedList.Mvc;
+@model PagedList.PagedList<SachOnline.Models.DONDATHANG>
+@*Xây dựn một helper tùy chỉnh để cắt độ dài chuỗi*@
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>}
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<h2>QUẢN LÝ ĐƠN THUÊ XE</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Số đơn hàng
+        </th>
+        <th>
+            Mã khách hàng
+        </th>
+        <th>
+            Ngày đặt xe
+        </th>
+        <th>
+            Trị giá
+        </th>
+        <th>
+            Ngày mượn xe
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            SĐT
+        </th>
+        <th>
+            Hình thức thanh toán
+        </th>
+        <th>
+            Số ngày thuê
+        </th>
+        <th>
+            Số tiền phạt
+        </th>
+        <th>
+            Tình trạng trẻ xe
+        </th>
+        <th>
+            Ngày trả xe
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoDH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaKH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayDH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TriGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChiNhan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DienThoaiNhan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HTThanhToan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoNgayThue)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoTienPhat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TrangThai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayTraXe)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", new { id = item.SoDH })" class="btn btn-warning" role="button">Sửa</a>
+        <a href="@Url.Action("Details", new { id = item.SoDH })" class="btn btn-primary" role="button">Chi tiết</a>
+        <a href="@Url.Action("Delete", new { id = item.SoDH })" class="btn btn-danger" role="button">Xóa</a>
+    </td>
+</tr>
+    }
+
+</table>
+@*Tạo iên kết phần trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount <div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>

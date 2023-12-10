@@ -1,0 +1,67 @@
+﻿@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+}
+
+<h2 class="text-center">XE ĐẠP</h2>
+<hr>
+<div class="row text-center">
+    @foreach (SachOnline.Models.XEDAP sach in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div class="thumbnail">
+                <img src="~/Images/Sach/@sach.HinhMinhHoa" alt="Thumbnail Image 1" class="img-responsive img-rounded imgbook" style="max-width: 251.3px; max-height: 314.13px">  <div class="caption">
+                    <h4 style="min-height:70px;">
+                        <a href="@Url.Action("ChiTietSach","SachOnline", new { id = sach.MaXe})">@sach.TenXe</a>
+                    </h4>
+                    <p>
+                        <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sach.MaXe, url = Request.Url.ToString() })" class="btn btn-primary" role="button">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section MenuPager{
+    <div class="MenuPager">
+        <ul class="pagination justify-content-end">
+            <li>
+                @if (currentPage > 1)
+                {
+                    <a href="@Url.Action("Index", new { page = currentPage - 1, pageSize = ViewBag.PageSize })" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                }
+            </li>
+            <li>
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <a href="@Url.Action("Index", new { page = i, pageSize = ViewBag.PageSize })" class="@(i == currentPage ? "active" : "")">@i</a>
+                }
+            </li>
+        <li>
+            @if (currentPage < totalPages)
+            {
+                <a href="@Url.Action("Index", new { page = currentPage + 1, pageSize = ViewBag.PageSize })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            }
+        </li>
+        </ul>
+    </div>
+}
+    <style>
+        .MenuPager {
+            display: inline;
+            text-align: center;
+        }
+    </style>
+    @section SachBanNhieuPartial{
+        @Html.Action("SachBanNhieuPartial", "SachOnline")
+    }
+

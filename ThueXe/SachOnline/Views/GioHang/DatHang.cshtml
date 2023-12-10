@@ -1,0 +1,113 @@
+﻿@using SachOnline.Models
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/GioHang/_LayoutGioHang.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN ĐƠN HÀNG</h2>
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight:bold;">
+        <td>Mã Xe Đạp</td>
+        <td>Tên Xe Đạp</td>
+        <td>Ảnh Bìa</td>
+        <td>Số Lượng</td>
+        <td>Số Ngày Thuê Xe</td>
+        <td>Đơn Giá</td>
+        <td>Thành Tiền</td>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr style="text-align:center; font-weight:bold;">
+    <td align="center">@item.iMaXe</td>
+    <td>@item.sTenXe</td>
+    <td><img src="~/Images/Sach/@item.sAnhBia" style="width:100px;"></td> @using (Html.BeginForm("CapNhatGioHang", "GioHang", new
+    {
+        iMaXe =
+item.iMaXe
+    }))
+    {
+        <td align="center">
+            @item.iSoLuong
+        </td>
+        <td align="center">
+            @item.iSoNgayThue
+        </td>
+        <td align="center">@string.Format("{0:#,##0,0}", @item.dDonGia)</td>
+        <td align="center">@string.Format("{0:#,##0,0}", @item.dThanhTien)</td>
+    }
+
+</tr>
+    }
+    <tr>
+    <tr>
+        <td colspan="4" style="text-align:right; color:red; font-weight:bold; padding-right:5px;">
+            Tổng số lượng: @string.Format("{0:#,##0}", @ViewBag.TongSoLuong)
+        </td>
+        <td colspan="1" style="text-align:right; color:red; font-weight:bold; padding-right:5px;">
+            Tông số ngày thuê: @string.Format("{0:#,##0}", @ViewBag.TongSoNgayThue)
+        <td colspan="3" style="text-align:center; color:red; font-weight:bold;">
+            Tổng tiền: @string.Format("{0:#,##0,0}", @ViewBag.TongTien) USD
+        </td>
+    </tr>
+    <tr style="font-weight:bold; color:blue; text-align:right;">
+        <td colspan="9">
+            @Html.ActionLink("TRỞ VỀ GIỎ HÀNG", "GioHang", "GioHang")
+        </td>
+    </tr>
+</table>
+<h2 style="text-align:center">THÔNG TIN THUÊ XE</h2>
+@{
+    KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+}
+<table align="center">
+    @using (Html.BeginForm())
+
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px;">
+            <td>Họ tên khách hàng:</td>
+            <td style="font-weight:bold">@kh.HoTenKH</td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Địa chỉ:</td>
+            <td style="font-weight:bold">@kh.DiaChiKH</td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Điện thoại:</td>
+            <td style="font-weight:bold">@kh.DienThoaiKH</td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Ngày chọn xe:</td>
+            <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Ngày mượn xe:</td>
+            <td style="font-weight:bold">
+                <input type="date" name="NgayGiao" />
+            </td>
+        </tr>
+
+        <tr style="height:60px;">
+            <td>Hình thức thanh toán</td>
+            <td>
+                <select class="form-control" name="HTThanhToan" id="Phuongthuc">
+                    <option value="1" selected>COD</option>
+                    <option value="2">Thanh Toán PayPal</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr style="height:60px;">
+            <td></td>
+            <td style="font-weight:bold">
+                <button type="submit" class="btn btn-success"> Thuê xe</button>
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+   

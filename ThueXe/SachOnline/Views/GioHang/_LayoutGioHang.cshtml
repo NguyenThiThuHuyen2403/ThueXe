@@ -1,0 +1,50 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap eCommerce Template</title>
+
+
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .imgbook {
+            transition: all 1s ease-in;
+            width: 400px;
+        }
+
+            .imgbook:hover {
+                transform: scale(0.9);
+                cursor: pointer;
+            }
+
+        .imgsachbannhieu {
+            width: 100px;
+        }
+    </style>
+
+
+</head>
+<body>
+    @Html.Action("NavPartial", "SachOnline")
+
+    <!-- /.container-->
+    <div class="container">
+        <div>@RenderBody()</div>
+    </div>
+    <!-- /.container-->
+   
+
+   
+</body>
+</html>

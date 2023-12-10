@@ -1,0 +1,99 @@
+﻿@model SachOnline.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DONDATHANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            Ngày Đặt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TriGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TriGia)
+        </dd>
+
+        <dt>
+            Ngày Mượn Xe
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGiaoHang)
+        </dd>
+
+        <dt>
+            Tên Khách Hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiNhan)
+        </dd>
+
+        <dt>
+            Địa Chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiNhan)
+        </dd>
+
+        <dt>
+            SĐT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HTThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HTThanhToan)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.SoNgayThue)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.SoTienPhat)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SoDH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
